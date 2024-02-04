@@ -16,42 +16,34 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      // endDrawer: Drawer(),
       appBar: AppBar(
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(top: 14),
-            
-            child: IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none)),
-          ),
-        ],
-        title: Column(
-          children: [
-             Text('     current location', style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                    color: AppColors.lightGray,
-                    fontWeight: FontWeight.w100,
-                                     
+          const Padding(
+            padding:  EdgeInsets.only(top:40),
+            child:  Icon(
+                    Icons.location_on,
+                    color: AppColors.gray,
+                    size: 16,
                   ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.location_on,
-                  color: AppColors.gray,
-                  size: 24,
-                ),
+          ),
                 const SizedBox(
                   width: 3,
                 ),
-                Text(
-                  'Lujain world',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: AppColors.gray,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,40,16,0),
+                  child: Text(
+                    'Lujain world',
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: AppColors.gray,
+                    ),
                   ),
                 ),
-              ],
-            ),
+        ],
+        title: Column(
+          mainAxisAlignment:  MainAxisAlignment.start,
+          children: [
+            Text("Dona't"),
           ],
         ),
       ),
