@@ -43,7 +43,13 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         title: Column(
           mainAxisAlignment:  MainAxisAlignment.start,
           children: [
-            Text("Dona't"),
+            Text(
+              "Dona't",
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
+            ),
           ],
         ),
       ),
