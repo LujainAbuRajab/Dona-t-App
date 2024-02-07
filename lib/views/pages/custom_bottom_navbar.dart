@@ -20,35 +20,36 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       appBar: AppBar(
         actions: [
           const Padding(
-            padding:  EdgeInsets.only(top:40),
-            child:  Icon(
-                    Icons.location_on,
-                    color: AppColors.gray,
-                    size: 16,
-                  ),
+            padding: EdgeInsets.only(top: 40),
+            child: Icon(
+              Icons.location_on,
+              color: AppColors.gray,
+              size: 14,
+            ),
           ),
-                const SizedBox(
-                  width: 3,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0,40,16,0),
-                  child: Text(
-                    'Lujain world',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: AppColors.gray,
-                    ),
+          const SizedBox(
+            width: 3,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 40, 16, 0),
+            child: Text(
+              'Lujain world',
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: AppColors.gray,
                   ),
-                ),
+            ),
+          ),
         ],
         title: Column(
-          mainAxisAlignment:  MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               "Dona't",
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 38,
+                    color: AppColors.darkPink
+                  ),
             ),
           ],
         ),

@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivary_app/models/category.dart';
 import 'package:food_delivary_app/models/product.dart';
+import 'package:food_delivary_app/utils/app_colors.dart';
+import 'package:food_delivary_app/views/pages/widgets/product_item.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String? selectedCategoryId;
+  late List<Product> filteredProducts ;
+
+  @override
+  void initState() {
+    super.initState();
+    filteredProducts = dummyProducts;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +32,20 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset('assets/images/Banner.jpg')),
             const SizedBox(height: 12),
+
             const TextField(
               //u should remove the const to avoid problems
               decoration: InputDecoration(
+                helperStyle: TextStyle(
+                  color: AppColors.lightPink,
+                ),
                 labelText: 'Find your donut!',
                 prefixIcon: Icon(Icons.search_rounded),
               ),
             ),
+
             const SizedBox(height: 12),
+            
             SizedBox(
               height: 110,
               child: ListView.builder(
@@ -31,66 +53,67 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     final dummyCategory = dummyCategories[index];
-                    return Card(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              dummyCategory.imgUrl,
-                              width: 50,
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(dummyCategory.title),
-                          ],
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          if(selectedCategoryId != null && selectedCategoryId == dummyCategory.id){
+                            selectedCategoryId = null;
+                            filteredProducts = dummyProducts;
+                          }else{
+                             selectedCategoryId = dummyCategory.id;
+                             filteredProducts = dummyProducts
+                              .where((product) => product.category.id == selectedCategoryId)
+                              .toList();
+                          }
+                        });
+                      },
+                      child: Card(
+                        color: selectedCategoryId == dummyCategory.id
+                            ? AppColors.primary
+                            : null,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                dummyCategory.imgUrl,
+                                width: 50,
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                dummyCategory.title,
+                                style: TextStyle(
+                                  color: selectedCategoryId == dummyCategory.id
+                                      ? Theme.of(context).canvasColor
+                                      : AppColors.primary,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
                   }),
             ),
+
+            const SizedBox(height: 12),
+        if(filteredProducts.isNotEmpty)
             GridView.builder(
-                itemCount: dummyProducts.length,
+                itemCount: filteredProducts.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),
                 itemBuilder: ((context, index) {
-                  final dummyProduct = dummyProducts[index];
-                  return Card(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Image.asset(dummyProduct.imgUrl),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            dummyProduct.name,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Text(
-                            '\$${dummyProduct.price}',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  final dummyProduct = filteredProducts[index];
+                  return ProductItem(dummyProduct :dummyProduct);
                 })),
+                if(filteredProducts.isEmpty)
+                  const Center(child: Text('No Products Found')),
           ],
         ),
       ),

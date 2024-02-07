@@ -26,19 +26,33 @@ List<Product> dummyProducts = [
   Product(
       id: '1',
       category: dummyCategories[0],
+      name: 'Vanilla',
+      imgUrl:
+          'assets/images/Vanilla.png',
+      price: 6.99),
+  Product(
+      id: '2',
+      category: dummyCategories[0],
+      name: 'Strawberry',
+      imgUrl:
+          'assets/images/red.png',
+      price: 6.99),
+  Product(
+      id: '13',
+      category: dummyCategories[0],
       name: 'Blue Ocean',
       imgUrl:
           'assets/images/donutblue.png',
       price: 6.99),
       Product(
-      id: '2',
+      id: '10',
       category: dummyCategories[0],
       name: 'Ice King',
       imgUrl:
           'assets/images/donatfrozen.png',
       price: 6.99),
       Product(
-      id: '3',
+      id: '7',
       category: dummyCategories[0],
       name: 'Chocolate',
       imgUrl:
@@ -66,7 +80,7 @@ List<Product> dummyProducts = [
           'assets/images/heart.png',
       price: 6.99),
       Product(
-      id: '7',
+      id: '3',
       category: dummyCategories[0],
       name: 'Perple World',
       imgUrl:
@@ -86,13 +100,7 @@ List<Product> dummyProducts = [
       imgUrl:
           'assets/images/Purplewithsprinkles.png',
       price: 6.99),
-      Product(
-      id: '10',
-      category: dummyCategories[0],
-      name: 'Strawberry',
-      imgUrl:
-          'assets/images/red.png',
-      price: 6.99),
+      
       Product(
       id: '11',
       category: dummyCategories[0],
@@ -107,13 +115,7 @@ List<Product> dummyProducts = [
       imgUrl:
           'assets/images/Sugarandcinnamon.png',
       price: 6.99),
-      Product(
-      id: '13',
-      category: dummyCategories[0],
-      name: 'Vanilla',
-      imgUrl:
-          'assets/images/Vanilla.png',
-      price: 6.99),
+      
       Product(
       id: '14',
       category: dummyCategories[0],
