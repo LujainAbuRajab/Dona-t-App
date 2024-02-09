@@ -5,7 +5,7 @@ import 'package:food_delivary_app/utils/app_colors.dart';
 class ProductItem extends StatefulWidget {
   final Product dummyProduct;
   const ProductItem({
-    super.key,
+    Key? key,
     required this.dummyProduct,
   });
 
@@ -21,7 +21,7 @@ class _ProductItemState extends State<ProductItem> {
         alignment: Alignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(8, 2, 8, 1),
             child: Column(
               children: [
                 Expanded(
@@ -36,27 +36,26 @@ class _ProductItemState extends State<ProductItem> {
                 ),
                 Text(
                   widget.dummyProduct.category.title,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: AppColors.lightGray,
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: AppColors.gray,
                       ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 1, 8, 8),
-                  child: Text(
-                    '\$${widget.dummyProduct.price}',
-                    style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.primary),
-                  ),
+                Text(
+                  '\$${widget.dummyProduct.price}',
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primary),
                 ),
                 Positioned(
-                  right: 4,
-                  top: 4,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.favorite_outline_rounded),
-                    color: Theme.of(context).primaryColor,
+                  right: 0,
+                  top: 0,
+                  child: InkWell(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.favorite_outline_rounded,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ),
               ],

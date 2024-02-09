@@ -130,5 +130,41 @@ List<Product> dummyProducts = [
       imgUrl:
           'assets/images/Yellowwithsprinkles.png',
       price: 6.99),
+      Product(
+      id: '16',
+      category: dummyCategories[1],
+      name: 'hot',
+      imgUrl:
+          'assets/images/hotchoclet.png',
+      price: 6.99),
+      Product(
+      id: '17',
+      category: dummyCategories[1],
+      name: 'orange',
+      imgUrl:
+          'assets/images/orande.png',
+      price: 6.99),
+      Product(
+      id: '18',
+      category: dummyCategories[1],
+      name: 'tea',
+      imgUrl:
+          'assets/images/tea.png',
+      price: 6.99),
+      Product(
+      id: '19',
+      category: dummyCategories[1],
+      name: 'vanilla drenk',
+      imgUrl:
+          'assets/images/vanilladrenk.png',
+      price: 6.99),
+      Product(
+      id: '20',
+      category: dummyCategories[1],
+      name: 'yansoon',
+      imgUrl:
+          'assets/images/yanson.png',
+      price: 6.99),
+      
       
 ];
