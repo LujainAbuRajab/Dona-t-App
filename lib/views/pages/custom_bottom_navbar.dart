@@ -102,7 +102,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       body: <Widget>[
         /// Home page
         const HomePage(),
-        const FavoritePage(),
+        const FavoritesPage(),
         const ProfilePage(),
       ][currentPageIndex],
     );

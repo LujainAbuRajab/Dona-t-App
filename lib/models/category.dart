@@ -16,7 +16,7 @@ class Category {
 List<Category> dummyCategories = [
   Category(
     id: "1",
-    title: "Regular",
+    title: "Donat",
     imgUrl:'assets/images/donutpink.png',
     onTap: () {},
   ),

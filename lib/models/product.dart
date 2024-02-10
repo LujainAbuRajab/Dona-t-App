@@ -9,6 +9,7 @@ class Product {
   final double price;
   final Category category;
 
+
   Product({
     required this.id,
     required this.name,

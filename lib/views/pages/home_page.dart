@@ -110,7 +110,12 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: ((context, index) {
                     final dummyProduct = filteredProducts[index];
                     return InkWell(
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) =>  ProductDetailsPage(product: dummyProduct),),),
+                        onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    ProductDetailsPage(product: dummyProduct),
+                              ),
+                            ).then((value) => setState(() {})),
                         child: ProductItem(dummyProduct: dummyProduct));
                   })),
             if (filteredProducts.isEmpty)

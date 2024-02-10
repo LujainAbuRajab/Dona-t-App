@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:food_delivary_app/models/product.dart';
 import 'package:food_delivary_app/utils/app_colors.dart';
 import 'package:food_delivary_app/views/pages/widgets/counter_widget.dart';
+import 'package:food_delivary_app/views/pages/widgets/product_specs_item.dart';
 
-class ProductDetailsPage extends StatelessWidget {
+class ProductDetailsPage extends StatefulWidget {
   final Product product;
   const ProductDetailsPage({super.key, required this.product});
 
+  @override
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,8 +20,20 @@ class ProductDetailsPage extends StatelessWidget {
         backgroundColor: AppColors.lightPink.withOpacity(0.2),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.favorite_outline_rounded),
+            onPressed: () {
+              setState(() {
+                        if (favProducts.contains(widget.product)) {
+                          favProducts.remove(widget.product);
+                        } else {
+                          favProducts.add(widget.product);
+                        }
+                      });
+            },
+            icon: Icon(
+              favProducts.contains(widget.product)
+                  ? Icons.favorite
+                  : Icons.favorite_border,
+            ),
             color: Theme.of(context).primaryColor,
           ),
         ],
@@ -41,7 +59,7 @@ class ProductDetailsPage extends StatelessWidget {
                     left: 50,
                   ),
                   child: Image.asset(
-                    product.imgUrl,
+                    widget.product.imgUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -62,7 +80,7 @@ class ProductDetailsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            product.name,
+                            widget.product.name,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
@@ -72,7 +90,7 @@ class ProductDetailsPage extends StatelessWidget {
                                 ),
                           ),
                           Text(
-                            product.category.title,
+                            widget.product.category.title,
                             style: Theme.of(context)
                                 .textTheme
                                 .labelLarge!
@@ -86,12 +104,61 @@ class ProductDetailsPage extends StatelessWidget {
                       CounterWidget(),
                     ],
                   ),
+                  const SizedBox(height: 30),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ProductSpecsItem(title: 'Size', value: 'Large'),
+                      SizedBox(height: 30, child: VerticalDivider()),
+                      ProductSpecsItem(title: 'Calories', value: '120 Cal'),
+                      SizedBox(height: 30, child: VerticalDivider()),
+                      ProductSpecsItem(title: 'Cooking', value: '10 mins'),
+                    ],
+                  ),
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '\$${widget.product.price}',
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              foregroundColor: AppColors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                            child: const Text(
+                              'Add to cart',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
           ],
         ),
-        
       ),
     );
   }

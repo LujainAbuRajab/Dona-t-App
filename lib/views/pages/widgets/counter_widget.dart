@@ -24,7 +24,7 @@ class _CounterWidgetState extends State<CounterWidget> {
               setState(() {
                 if (counter > 1) {
                   counter--;
-                };
+                }
               });
             },
             icon: const Icon(Icons.remove),

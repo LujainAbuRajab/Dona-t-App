@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:food_delivary_app/models/product.dart';
 import 'package:food_delivary_app/utils/app_colors.dart';
 
@@ -7,7 +9,7 @@ class ProductItem extends StatefulWidget {
   const ProductItem({
     Key? key,
     required this.dummyProduct,
-  });
+  }) : super(key: key);
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -51,10 +53,29 @@ class _ProductItemState extends State<ProductItem> {
                   right: 0,
                   top: 0,
                   child: InkWell(
-                    onTap: () {},
-                    child: Icon(
-                      Icons.favorite_outline_rounded,
-                      color: Theme.of(context).primaryColor,
+                    onTap: () {
+                      setState(() {
+                        if (favProducts.contains(widget.dummyProduct)) {
+                          favProducts.remove(widget.dummyProduct);
+                        } else {
+                          favProducts.add(widget.dummyProduct);
+                        }
+                      });
+                    },
+                    child: DecoratedBox(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Icon(
+                          favProducts.contains(widget.dummyProduct)
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
                     ),
                   ),
                 ),
