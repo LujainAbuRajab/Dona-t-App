@@ -49,37 +49,37 @@ class _ProductItemState extends State<ProductItem> {
                       fontWeight: FontWeight.bold,
                       color: AppColors.primary),
                 ),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        if (favProducts.contains(widget.dummyProduct)) {
-                          favProducts.remove(widget.dummyProduct);
-                        } else {
-                          favProducts.add(widget.dummyProduct);
-                        }
-                      });
-                    },
-                    child: DecoratedBox(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.white,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Icon(
-                          favProducts.contains(widget.dummyProduct)
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ),
-                    ),
+              ],
+            ),
+          ),
+          Positioned(
+            right: 0,
+            top: 0,
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  if (favProducts.contains(widget.dummyProduct)) {
+                    favProducts.remove(widget.dummyProduct);
+                  } else {
+                    favProducts.add(widget.dummyProduct);
+                  }
+                });
+              },
+              child: DecoratedBox(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Icon(
+                    favProducts.contains(widget.dummyProduct)
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ],

@@ -103,7 +103,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         /// Home page
         const HomePage(),
         const FavoritesPage(),
-        const ProfilePage(),
+        const ProfilePage1(),
       ][currentPageIndex],
     );
   }

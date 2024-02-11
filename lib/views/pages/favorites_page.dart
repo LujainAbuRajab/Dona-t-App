@@ -36,7 +36,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         product: favProducts[index],
                       ),
                     ),
-                  );
+                  ).then((value) => setState(() {}));
                 },
                 leading: Image.asset(
                   favProducts[index].imgUrl,
